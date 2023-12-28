@@ -1,3 +1,4 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Initial Release of the package
+* Works with PopScope widget introduced in flutter 3.16

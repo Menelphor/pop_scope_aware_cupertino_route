@@ -18,7 +18,7 @@ enhanced with the following:
 
 A working app using this package can be found in the [example](example/lib/main.dart) folder.
 
-![gif displaying the function of the package](example.gif)
+![gif displaying the function of the package](https://s13.gifyu.com/images/Sj8FE.gif)
 
 
 -------

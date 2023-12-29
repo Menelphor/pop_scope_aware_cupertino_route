@@ -1,6 +1,6 @@
 name: pop_scope_aware_cupertino_route
 description: an adjustment of the cupertino page transition to be usable with pop scope
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/Menelphor
 
 environment:

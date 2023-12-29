@@ -1,5 +1,6 @@
-## 0.0.2
+## 0.0.3
 * cleaned up Readme
+* cleaned up example
 * fixed formatting issue
 
 ## 0.0.1

@@ -1,3 +1,6 @@
+## 0.0.4
+* updated for flutter 3.24
+
 ## 0.0.3
 * cleaned up Readme
 * cleaned up example

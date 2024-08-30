@@ -76,7 +76,7 @@ Widget build(BuildContext context) {
 Widget build(BuildContext context) {
   return PopScope(
     canPop: false,
-    onPopInvoked: (canPop) {
+    onPopInvokedWithResult: (bool didPop, Object? result) {
       print(canPop);
     },
     child: Container(),

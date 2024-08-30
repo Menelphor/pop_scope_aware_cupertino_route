@@ -148,16 +148,6 @@ mixin PopScopeAwareCupertinoRouteTransitionMixin<T> on PageRoute<T> {
     return route.navigator!.userGestureInProgress;
   }
 
-  /// True if an iOS-style back swipe pop gesture is currently underway for this route.
-  ///
-  /// See also:
-  ///
-  ///  * [isPopGestureInProgress], which returns true if a Cupertino pop gesture
-  ///    is currently underway for specific route.
-  ///  * [popGestureEnabled], which returns true if a user-triggered pop gesture
-  ///    would be allowed.
-  bool get popGestureInProgress => isPopGestureInProgress(this);
-
   /// Whether a pop gesture can be started by the user.
   ///
   /// Returns true if the user can edge-swipe to a previous route.
@@ -167,6 +157,7 @@ mixin PopScopeAwareCupertinoRouteTransitionMixin<T> on PageRoute<T> {
   /// true first.
   ///
   /// This should only be used between frames, not during build.
+  @override
   bool get popGestureEnabled => _isPopGestureEnabled(this);
 
   static bool _isPopGestureEnabled<T>(PageRoute<T> route) {
@@ -223,11 +214,11 @@ mixin PopScopeAwareCupertinoRouteTransitionMixin<T> on PageRoute<T> {
   }
 
   // Called by _CupertinoBackGestureDetector when a pop ("back") drag start
-  // gesture is detected. It returns the route's `onPopInvoked` callback with didPop = false
+  // gesture is detected. It returns the route's `onPopInvokedWithResult` callback with didPop = false
   static Function()? _maybeGetOnPopInvokedCallback<T>(PageRoute<T> route) {
     final disposition = route.popDisposition;
     if (disposition == RoutePopDisposition.doNotPop) {
-      return () => route.onPopInvoked(false);
+      return () => route.onPopInvokedWithResult(false, null);
     }
     return null;
   }

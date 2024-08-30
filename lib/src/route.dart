@@ -148,17 +148,6 @@ mixin PopScopeAwareCupertinoRouteTransitionMixin<T> on PageRoute<T> {
     return route.navigator!.userGestureInProgress;
   }
 
-  /// True if an iOS-style back swipe pop gesture is currently underway for this route.
-  ///
-  /// See also:
-  ///
-  ///  * [isPopGestureInProgress], which returns true if a Cupertino pop gesture
-  ///    is currently underway for specific route.
-  ///  * [popGestureEnabled], which returns true if a user-triggered pop gesture
-  ///    would be allowed.
-  @override
-  bool get popGestureInProgress => isPopGestureInProgress(this);
-
   /// Whether a pop gesture can be started by the user.
   ///
   /// Returns true if the user can edge-swipe to a previous route.

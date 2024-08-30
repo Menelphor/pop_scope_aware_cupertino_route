@@ -25,23 +25,43 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
-  void _goToSecondScreen(BuildContext context) => Navigator.of(context)
-      .push(MaterialPageRoute(builder: (_) => const SecondScreen()));
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  Future<String?> _goToSecondScreen(BuildContext context) =>
+      Navigator.of(context).push<String>(
+          MaterialPageRoute(builder: (_) => const SecondScreen()));
+
+  String? result;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Demo')),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () => _goToSecondScreen(context),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-            child: Text('Go to second screen'),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text('Result: $result'),
+            ElevatedButton(
+              onPressed: () async {
+                final newResult = await _goToSecondScreen(context);
+                setState(() {
+                  result = newResult;
+                });
+              },
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                child: Text('Go to second screen'),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -69,9 +89,9 @@ class _SecondScreenState extends State<SecondScreen> {
             adaptiveAction(
               context: context,
               child: const Text('pop till home'),
-              onPressed: () => Navigator.of(context).popUntil(
-                (route) => route.isFirst,
-              ),
+              onPressed: () => Navigator.of(context)
+                ..pop()
+                ..pop('popped in dialog'),
             ),
             adaptiveAction(
               context: context,
@@ -111,12 +131,18 @@ class _SecondScreenState extends State<SecondScreen> {
       onPopInvokedWithResult: _onWillPop,
       child: Scaffold(
         appBar: AppBar(title: const Text('Second Screen')),
-        body: Center(
-          child: SwitchListTile(
-            title: const Text('Back Navigation Enabled'),
-            value: _popAllowed,
-            onChanged: _updateChanges,
-          ),
+        body: Column(
+          children: [
+            SwitchListTile(
+              title: const Text('Back Navigation Enabled'),
+              value: _popAllowed,
+              onChanged: _updateChanges,
+            ),
+            ListTile(
+              title: const Text('pop till home with result'),
+              onTap: () => Navigator.of(context).pop('popped till home'),
+            )
+          ],
         ),
       ),
     );

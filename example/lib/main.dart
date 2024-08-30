@@ -58,7 +58,7 @@ class SecondScreen extends StatefulWidget {
 class _SecondScreenState extends State<SecondScreen> {
   bool _popAllowed = false;
 
-  _onWillPop(bool popAllowed) async {
+  _onWillPop(bool popAllowed, result) async {
     if (!popAllowed) {
       showAdaptiveDialog(
         context: context,
@@ -108,7 +108,7 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: _popAllowed,
-      onPopInvoked: _onWillPop,
+      onPopInvokedWithResult: _onWillPop,
       child: Scaffold(
         appBar: AppBar(title: const Text('Second Screen')),
         body: Center(

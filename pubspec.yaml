@@ -1,11 +1,13 @@
 name: pop_scope_aware_cupertino_route
 description: an adjustment of the cupertino page transition to be usable with pop scope
 version: 0.0.3
-homepage: https://github.com/Menelphor
+homepage: https://github.com/Menelphor/pop_scope_aware_cupertino_route
+issue_tracker: https://github.com/Menelphor/pop_scope_aware_cupertino_route/issues
+repository: https://github.com/Menelphor/pop_scope_aware_cupertino_route
 
 environment:
-  sdk: '>=3.1.4 <4.0.0'
-  flutter: ">=3.16.0"
+  sdk: '>=3.5.0 <4.0.0'
+  flutter: ">=3.24.0"
 
 dependencies:
   flutter:
@@ -14,6 +16,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
 
 flutter:

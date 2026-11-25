@@ -1,4 +1,4 @@
-library pop_scope_aware_cupertino_route;
+library;
 
 export 'src/route.dart';
 export 'src/transition_builder.dart';

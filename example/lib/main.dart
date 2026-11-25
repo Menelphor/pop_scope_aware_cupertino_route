@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:pop_scope_aware_cupertino_route/pop_scope_aware_cupertino_route.dart';
 
 void main() {
@@ -33,9 +33,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Future<String?> _goToSecondScreen(BuildContext context) =>
-      Navigator.of(context).push<String>(
-          MaterialPageRoute(builder: (_) => const SecondScreen()));
+  Future<String?> _goToSecondScreen(BuildContext context) => Navigator.of(
+    context,
+  ).push<String>(MaterialPageRoute(builder: (_) => const SecondScreen()));
 
   String? result;
 
@@ -78,8 +78,8 @@ class SecondScreen extends StatefulWidget {
 class _SecondScreenState extends State<SecondScreen> {
   bool _popAllowed = false;
 
-  _onWillPop(bool popAllowed, result) async {
-    if (!popAllowed) {
+  void _onWillPop(bool didPop, Object? result) {
+    if (!didPop) {
       showAdaptiveDialog(
         context: context,
         barrierDismissible: true,
@@ -141,7 +141,7 @@ class _SecondScreenState extends State<SecondScreen> {
             ListTile(
               title: const Text('pop till home with result'),
               onTap: () => Navigator.of(context).pop('popped till home'),
-            )
+            ),
           ],
         ),
       ),
